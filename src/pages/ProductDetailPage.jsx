@@ -7,7 +7,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import ErrorMessage from '../components/ErrorMessage';
 import './ProductDetailPage.css';
 
-const API = import.meta.env.VITE_API_BASE_URL;
+const API = import.meta.env.VITE_API_BASE_URL || 'https://fakestoreapi.com';
 
 export default function ProductDetailPage() {
   const { id } = useParams();

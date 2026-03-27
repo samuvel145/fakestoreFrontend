@@ -4,7 +4,7 @@ import ProductCard, { SkeletonCard } from '../components/ProductCard';
 import ErrorMessage from '../components/ErrorMessage';
 import './HomePage.css';
 
-const API = import.meta.env.VITE_API_BASE_URL;
+const API = import.meta.env.VITE_API_BASE_URL || 'https://fakestoreapi.com';
 
 export default function HomePage() {
   const { data: allProducts, isLoading, error } = useFetch(`${API}/products`);
