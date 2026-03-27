@@ -1,0 +1,83 @@
+.confirm-page {
+  display: flex;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+}
+
+.confirm-card {
+  max-width: 560px;
+  width: 100%;
+  text-align: center;
+  background: #fff;
+  border-radius: 20px;
+  padding: 3rem 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.confirm-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.confirm-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #16a34a;
+  margin: 0 0 0.5rem;
+}
+
+.confirm-text {
+  color: #6b7280;
+  margin: 0 0 2rem;
+  font-size: 0.95rem;
+}
+
+.confirm-summary {
+  text-align: left;
+  background: #f9fafb;
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.confirm-summary-heading {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 0.75rem;
+}
+
+.confirm-summary-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: #4b5563;
+  padding: 0.35rem 0;
+}
+
+.confirm-summary-total {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #111827;
+  border-top: 1px solid #e5e7eb;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+}
+
+.confirm-btn {
+  display: inline-block;
+  padding: 0.85rem 2.5rem;
+  background: #4f46e5;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.confirm-btn:hover {
+  background: #4338ca;
+}

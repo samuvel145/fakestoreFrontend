@@ -1,0 +1,64 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.navbar-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #4f46e5;
+  text-decoration: none;
+  letter-spacing: -0.5px;
+}
+
+.navbar-brand:hover {
+  color: #4338ca;
+}
+
+.navbar-cart {
+  position: relative;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #374151;
+  transition: color 0.2s;
+}
+
+.navbar-cart:hover {
+  color: #4f46e5;
+}
+
+.cart-icon {
+  width: 26px;
+  height: 26px;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background: #ef4444;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}

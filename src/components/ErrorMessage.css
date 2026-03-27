@@ -1,0 +1,35 @@
+.error-box {
+  max-width: 480px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.error-icon {
+  font-size: 1.5rem;
+}
+
+.error-text {
+  color: #b91c1c;
+  margin: 0.5rem 0 0;
+  font-size: 0.95rem;
+}
+
+.error-retry-btn {
+  margin-top: 1rem;
+  padding: 0.5rem 1.5rem;
+  background: #b91c1c;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+.error-retry-btn:hover {
+  background: #991b1b;
+}
