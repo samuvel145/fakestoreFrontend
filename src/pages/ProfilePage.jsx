@@ -45,7 +45,8 @@ export default function ProfilePage() {
               username: localUser.username,
               email: localUser.email,
               name: { firstname: localUser.username, lastname: '' },
-              address: { street: 'Local Street', city: 'Local City', zipcode: '00000' },
+              addressStr: localUser.addressStr || 'No address provided yet',
+              address: { street: '', city: '', zipcode: '' }, // Fallback if needed globally
               phone: localUser.phone || 'N/A'
             };
           }
@@ -119,7 +120,7 @@ export default function ProfilePage() {
             <div><strong style={{ color: '#4b5563' }}>Username:</strong> <br/>{profile.username}</div>
             <div><strong style={{ color: '#4b5563' }}>Email:</strong> <br/>{profile.email}</div>
             <div><strong style={{ color: '#4b5563' }}>Phone:</strong> <br/>{profile.phone}</div>
-            <div style={{ gridColumn: '1 / -1' }}><strong style={{ color: '#4b5563' }}>Address:</strong> <br/>{profile.address?.street}, {profile.address?.city}, {profile.address?.zipcode}</div>
+            <div style={{ gridColumn: '1 / -1' }}><strong style={{ color: '#4b5563' }}>Address:</strong> <br/>{profile.addressStr || `${profile.address?.street}, ${profile.address?.city}, ${profile.address?.zipcode}`}</div>
           </div>
         </div>
       )}

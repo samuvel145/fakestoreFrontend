@@ -71,6 +71,19 @@ export default function CheckoutPage() {
       products: cart.map(i => ({ productId: i.id, quantity: i.quantity }))
     });
     localStorage.setItem('localOrders', JSON.stringify(localOrders));
+
+    // Update the corresponding locally saved user's profile with their new address and phone
+    if (isAuthenticated) {
+      const activeUserId = JSON.parse(localStorage.getItem('userId'));
+      const localUsers = JSON.parse(localStorage.getItem('localUsers') || '[]');
+      const userIndex = localUsers.findIndex(u => String(u.id) === String(activeUserId));
+      
+      if (userIndex !== -1) {
+        localUsers[userIndex].phone = phone;
+        localUsers[userIndex].addressStr = address; // Saving string safely
+        localStorage.setItem('localUsers', JSON.stringify(localUsers));
+      }
+    }
     
     setIsSubmitting(false);
     clearCart();
