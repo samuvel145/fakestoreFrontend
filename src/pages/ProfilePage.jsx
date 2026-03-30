@@ -49,8 +49,15 @@ export default function ProfilePage() {
           }
         }
 
+        // Add any locally confirmed orders to the API history so it actually shows up
+        const localOrders = JSON.parse(localStorage.getItem('localOrders') || '[]');
+        const userLocalOrders = localOrders.filter(o => String(o.userId) === String(userId));
+        
+        // Combine them, putting recent local ones on top
+        const fullCartHistory = [...userLocalOrders, ...(cartRes || [])];
+
         setProfile(userRes);
-        setCartHistory(cartRes || []);
+        setCartHistory(fullCartHistory);
       } catch (err) {
         setError('Failed to load profile data');
       } finally {

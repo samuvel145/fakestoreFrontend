@@ -44,6 +44,7 @@ export default function CheckoutPage() {
     }
 
     const orderSummary = {
+      id: cartId || Math.floor(Math.random() * 10000), // Fallback ID if no cartId
       items: cart.map((item) => ({
         title: item.title,
         quantity: item.quantity,
@@ -57,6 +58,17 @@ export default function CheckoutPage() {
     };
     
     sessionStorage.setItem('lastOrder', JSON.stringify(orderSummary));
+
+    // Save completely local order history so it shows on Profile Page!
+    const localOrders = JSON.parse(localStorage.getItem('localOrders') || '[]');
+    // Mock the FakeStore Cart format to keep ProfilePage simple: 
+    localOrders.push({
+      id: orderSummary.id,
+      userId: isAuthenticated ? JSON.parse(localStorage.getItem('userId')) : null,
+      date: orderSummary.date,
+      products: cart.map(i => ({ productId: i.id, quantity: i.quantity }))
+    });
+    localStorage.setItem('localOrders', JSON.stringify(localOrders));
     
     setIsSubmitting(false);
     clearCart();
