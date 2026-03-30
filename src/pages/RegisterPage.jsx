@@ -44,6 +44,12 @@ export default function RegisterPage() {
       const result = await registerUser(userData);
       
       if (result && result.id) {
+        // Since Fake Store API doesn't actually save POST data, we save it locally
+        // so that the login page can recognize newly registered users.
+        const localUsers = JSON.parse(localStorage.getItem('localUsers') || '[]');
+        localUsers.push({ username, email, password, id: result.id });
+        localStorage.setItem('localUsers', JSON.stringify(localUsers));
+
         setSuccess('Account created successfully! You can now log in.');
         setUsername('');
         setEmail('');

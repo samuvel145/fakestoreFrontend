@@ -14,6 +14,28 @@ export function AuthProvider({ children }) {
 
   const login = async (inputUsername, password) => {
     try {
+      // 1. Check local Users first to handle newly registered users
+      const localUsers = JSON.parse(localStorage.getItem('localUsers') || '[]');
+      const foundLocal = localUsers.find(
+        (u) => u.username === inputUsername && u.password === password
+      );
+
+      if (foundLocal) {
+        // Create a dummy token for local users since the API won't give them one
+        const dummyToken = `local_token_${foundLocal.id}_${Date.now()}`;
+        
+        localStorage.setItem('token', dummyToken);
+        localStorage.setItem('userId', foundLocal.id);
+        localStorage.setItem('username', inputUsername);
+
+        setToken(dummyToken);
+        setUserId(foundLocal.id);
+        setUsername(inputUsername);
+
+        return { success: true };
+      }
+
+      // 2. Otherwise try the Fake Store API (for demo users like johnd)
       const result = await apiLogin(inputUsername, password);
       
       if (result && result.token) {
