@@ -10,7 +10,6 @@ export default function RegisterPage() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [phone, setPhone] = useState('');
   
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
@@ -22,7 +21,7 @@ export default function RegisterPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!username || !email || !password || !phone) {
+    if (!username || !email || !password) {
       setError('Please fill all fields');
       return;
     }
@@ -39,7 +38,7 @@ export default function RegisterPage() {
         password: password,
         name: { firstname: username, lastname: '' },
         address: { city: '', street: '', number: 0, zipcode: '', geolocation: { lat: '0', long: '0' } },
-        phone: phone
+        phone: ''
       };
       
       const result = await registerUser(userData);
@@ -48,14 +47,13 @@ export default function RegisterPage() {
         // Since Fake Store API doesn't actually save POST data, we save it locally
         // so that the login page can recognize newly registered users.
         const localUsers = JSON.parse(localStorage.getItem('localUsers') || '[]');
-        localUsers.push({ username, email, password, phone, id: result.id });
+        localUsers.push({ username, email, password, id: result.id });
         localStorage.setItem('localUsers', JSON.stringify(localUsers));
 
         setSuccess('Account created successfully! You can now log in.');
         setUsername('');
         setEmail('');
         setPassword('');
-        setPhone('');
         
         // Optional: Redirect to login after 2 seconds
         setTimeout(() => {
@@ -134,22 +132,6 @@ export default function RegisterPage() {
               placeholder="Email address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              style={{
-                width: '100%',
-                padding: '0.75rem',
-                borderRadius: '0.5rem',
-                border: '1px solid #d1d5db',
-                outline: 'none',
-                boxSizing: 'border-box'
-              }}
-            />
-          </div>
-          <div>
-            <input
-              type="text"
-              placeholder="Phone number"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
               style={{
                 width: '100%',
                 padding: '0.75rem',
