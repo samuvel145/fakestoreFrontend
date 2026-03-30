@@ -15,6 +15,7 @@ export default function CheckoutPage() {
   const [name, setName] = useState('');
   const [address, setAddress] = useState('');
   const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
 
@@ -54,6 +55,7 @@ export default function CheckoutPage() {
       name,
       address,
       email,
+      phone,
       date: new Date().toISOString(),
     };
     
@@ -117,6 +119,18 @@ export default function CheckoutPage() {
                 placeholder="john@example.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label className="form-label" htmlFor="phone">Phone Number</label>
+              <input
+                id="phone"
+                className="form-input"
+                type="tel"
+                placeholder="+1 (555) 000-0000"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
                 required
               />
             </div>

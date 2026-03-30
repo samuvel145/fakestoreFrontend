@@ -46,7 +46,7 @@ export default function ProfilePage() {
               email: localUser.email,
               name: { firstname: localUser.username, lastname: '' },
               address: { street: 'Local Street', city: 'Local City', zipcode: '00000' },
-              phone: 'N/A'
+              phone: localUser.phone || 'N/A'
             };
           }
         }
