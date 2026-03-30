@@ -12,6 +12,7 @@ import CartPage from './pages/CartPage';
 import CheckoutPage from './pages/CheckoutPage';
 import OrderConfirmPage from './pages/OrderConfirmPage';
 import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
 import ProfilePage from './pages/ProfilePage';
 
 export default function App() {
@@ -27,7 +28,7 @@ export default function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/product/:id" element={<ProductDetailPage />} />
               <Route path="/login" element={<LoginPage />} />
-              <Route path="/register" element={<div style={{ padding: '2rem', textAlign: 'center' }}>Coming Soon</div>} />
+              <Route path="/register" element={<RegisterPage />} />
 
               {/* Protected Routes */}
               <Route path="/cart" element={
