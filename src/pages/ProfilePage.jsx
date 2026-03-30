@@ -16,10 +16,39 @@ export default function ProfilePage() {
     const fetchProfileData = async () => {
       try {
         setIsLoading(true);
-        const [userRes, cartRes] = await Promise.all([
-          getUser(userId),
-          getUserCart(userId)
-        ]);
+        
+        let userRes = null;
+        let cartRes = [];
+
+        // Try getting the profile from API
+        try {
+          userRes = await getUser(userId);
+        } catch (e) {
+          console.warn("API User fetch failed, proceeding to check local storage.");
+        }
+
+        // Try getting cart from API
+        try {
+          cartRes = await getUserCart(userId);
+        } catch (e) {
+          console.warn("API Cart fetch failed.");
+        }
+
+        // Fallback for locally registered users
+        if (!userRes) {
+          const localUsers = JSON.parse(localStorage.getItem('localUsers') || '[]');
+          const localUser = localUsers.find(u => u.id === userId);
+          if (localUser) {
+            userRes = {
+              username: localUser.username,
+              email: localUser.email,
+              name: { firstname: localUser.username, lastname: '' },
+              address: { street: 'Local Street', city: 'Local City', zipcode: '00000' },
+              phone: 'N/A'
+            };
+          }
+        }
+
         setProfile(userRes);
         setCartHistory(cartRes || []);
       } catch (err) {
